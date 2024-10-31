@@ -1,752 +1,421 @@
 <template>
-    <div class="framework-pc">
-        <div class="footer">
-            <div class="menu-separator">
-                <div class="rule">
-                </div>
-            </div>
-            <div class="text-link-list-item">
-                <div class="text----000-00-00000---2021--0459---000------11-2---1666-2837">
-                    힐링커 | 사업자등록번호: 000-00-00000 | 통신판매번호 2021-서울구로-0459 | 대표자: 000 | 주소: 서울시 영등포구 은행로 11, 2층 | 대표전화: 1666-2837
-                </div>
-                <div class="text---">
-                    서비스이용약관 | 개인정보처리방침
-                </div>
-            </div>
-            <div class="text-link-list-item-1">
-                <div class="text--healinker-all-rights-reserved">
-                    © Healinker. All rights reserved.
-                </div>
-            </div>
-        </div>
-        <div class="hero-actions">
-            <div class="text-content-title">
-                <div class="title">
-                    건강검진 결과 분석하기
-                </div>
-            </div>
-            <div class="stats-card">
-                <div class="button">
-                    <svg id="0:1185/0:145" class="file"></svg>
-                    <div class="button-1">
-                        파일 선택
-                    </div>
-                </div>
-                <div class="review-body">
-                    <div class="text">
-                        <div class="text-1">
-                            PDF, PNG 파일을 여기에 드롭하세요
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header">
-            <div class="block">
-                <div class="logo">
-                    <div class="bi-temporary">
-                        <svg id="0:1188/0:1426" class="vector"></svg>
-                        <div class="healinker">
-                            Healinker
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="navigation-pill-list">
-            </div>
-            <div class="button-2">
-                <div class="button-3">
-                    로그인
-                </div>
-            </div>
-        </div>
-        <div class="popover">
-            <div class="form-contact">
-                <div class="block-1">
-                    <div class="logo-1">
-                        <div class="bi-temporary-1">
-                            <svg id="0:1197" class="vector-1"></svg>
-                            <div class="healinker-1">
-                                Healinker
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text----1">
-                    검진결과를 한눈에 보세요
-                </div>
-                <div class="frame-2">
-                    <div class="button-group">
-                        <div class="button-6">
-                            <div class="kakao">
-                                <img src="https://image-resource.creatie.ai/138892452815422/138892452815424/2b8ca0c02ff1435ba174e678c9c023e8.png" class="rectangle---yellow-1" />
-                            </div>
-                            <div class="button-7">
-                                카카오로 시작하기
-                            </div>
-                        </div>
-                    </div>
-                    <div class="button-group-1">
-                        <div class="button-10">
-                            <svg id="0:1202/0:345/0:219" class="mail"></svg>
-                            <div class="button-11">
-                                이메일로 시작하기
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text---------">
-                    본 서비스에 로그인함으로써 귀하는 이용약관 및 개인정보처리방침에 동의하게 됩니다.
-                </div>
-            </div>
-        </div>
+  <div :class="$style.frameworkPc">
+    <div :class="$style.footer">
+      <div :class="$style.menuSeparator">
+        <div :class="$style.rule" />
+      </div>
+      <div :class="$style.textLinkListItem">
+        <div :class="$style.div">힐링커 | 사업자등록번호: 000-00-00000 | 통신판매번호 2021-서울구로-0459 | 대표자: 000 | 주소: 서울시 영등포구 은행로 11, 2층 | 대표전화: 1666-2837</div>
+        <div :class="$style.listItem">서비스이용약관 | 개인정보처리방침</div>
+      </div>
+      <div :class="$style.textLinkListItem1">
+        <div :class="$style.healinkerAllRights">© Healinker. All rights reserved.</div>
+      </div>
     </div>
+    <div :class="$style.heroActions">
+      <div :class="$style.textContentTitle">
+        <div :class="$style.title">건강검진 결과 분석하기</div>
+      </div>
+      <div :class="$style.statsCard">
+        <div :class="$style.button">
+          <img :class="$style.fileIcon" alt="파일 선택" :src="icons.icon_file" />
+          <div :class="$style.button1">파일 선택</div>
+        </div>
+        <div :class="$style.reviewBody">
+          <div :class="$style.text">
+            <div :class="$style.listItem">PDF, PNG 파일을 여기에 드롭하세요</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div :class="$style.header">
+      <div :class="$style.block">
+        <div :class="$style.logo">
+          <div :class="$style.biTemporary">
+            <img :class="$style.vectorIcon" alt="힐링커 로고" :src="icons.logo_main" />
+            <div :class="$style.healinker">Healinker</div>
+          </div>
+        </div>
+      </div>
+      <div :class="$style.navigationPillList" />
+      <div :class="$style.button2">
+        <div :class="$style.button1">로그인</div>
+      </div>
+    </div>
+    <div :class="$style.popover">
+      <div :class="$style.formContact">
+        <div :class="$style.block1">
+          <div :class="$style.iconButton" />
+          <div :class="$style.iconButton" />
+          <div :class="$style.block">
+            <div :class="$style.biTemporary">
+              <img :class="$style.vectorIcon" alt="힐링커 로고" :src="icons.logo_main" />
+              <div :class="$style.healinker">Healinker</div>
+            </div>
+          </div>
+        </div>
+        <div :class="$style.title1">검진결과를 한눈에 보세요</div>
+        <div :class="$style.buttonGroupParent">
+          <div :class="$style.buttonGroup">
+            <div :class="$style.button4">
+              <img :class="$style.kakaoIcon" alt="카카오 로그인" :src="icons.icon_kakao" />
+              <div :class="$style.button1">카카오로 시작하기</div>
+            </div>
+          </div>
+          <div :class="$style.buttonGroup">
+            <div :class="$style.button4">
+              <img :class="$style.fileIcon" alt="이메일 로그인" :src="icons.icon_email" />
+              <div :class="$style.button1">이메일로 시작하기</div>
+            </div>
+          </div>
+        </div>
+        <div :class="$style.div1">본 서비스에 로그인함으로써 귀하는 이용약관 및 개인정보처리방침에 동의하게 됩니다.</div>
+      </div>
+    </div>
+  </div>
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-<script setup>
-import {
-    ref,
-    computed,
-    reactive
-} from 'vue';
-const props = defineProps({
-});
+export default defineComponent({
+  name: "FrameworkPC",
+  computed: {
+    icons() {
+      return {
+        logo: 'images/logo.svg',
+        logo_main: 'images/logo_main.svg',
+        icon_kakao: 'images/icon_kakao.svg',
+        icon_email: 'images/icon_email.svg',
+        icon_file: 'images/icon_file.svg',
+        icon_chevron_down: 'images/icon_chevron_down.svg',
+      }
+    }
+  }
+})
 </script>
 
-<style scoped>
-.framework-pc {
-  width: 1200px;
-  height: 733px;
-}
-.framework-pc .footer {
-  position: absolute;
-  top: 522px;
-  left: 0%;
-  right: 0%;
-  width: calc(100% - 0% - 0%);
-  height: 212px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  row-gap: 32px;
-  column-gap: 32px;
-  padding: 32px;
-  overflow: hidden;
-  background: #FFFFFF;
-  border-width: 1px 0px 0px 0px;
-  border-style: solid;
-  border-color: #D9D9D9;
-}
-.framework-pc .footer .menu-separator {
-  flex-shrink: 0;
+<style module>
+.rule {
   align-self: stretch;
-  width: 1136px;
-  height: 17px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 0px 8px 0px;
-}
-.framework-pc .footer .menu-separator .rule {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 1136px;
+  position: relative;
+  background-color: var(--border-default-default);
   height: 1px;
-  background: #D9D9D9;
 }
-.framework-pc .footer .text-link-list-item {
+.menuSeparator {
+  align-self: stretch;
+  border-radius: var(--br-5xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-sm) 0px;
+}
+.div {
+  width: 561px;
+  position: relative;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
+}
+.listItem {
+  position: relative;
+  line-height: 140%;
+}
+.textLinkListItem {
   width: 1096px;
   height: 44px;
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: start;
-  row-gap: 0px;
 }
-.framework-pc .footer .text-link-list-item .text----000-00-00000---2021--0459---000------11-2---1666-2837 {
-  flex-shrink: 0;
-  width: 561px;
-  height: 45px;
-  color: #1E1E1E;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 22.4px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
+.healinkerAllRights {
+  flex: 1;
+  position: relative;
+  line-height: 140%;
 }
-.framework-pc .footer .text-link-list-item .text--- {
-  flex-shrink: 0;
-  width: 236px;
-  height: 23px;
-  color: #1E1E1E;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 22.4px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-}
-.framework-pc .footer .text-link-list-item-1 {
-  flex-shrink: 0;
+.textLinkListItem1 {
   width: 1096px;
-  height: 23px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: start;
-  row-gap: 0px;
-}
-.framework-pc .footer .text-link-list-item-1 .text--healinker-all-rights-reserved {
-  flex-grow: 1;
-  width: 1096px;
-  height: 23px;
-  color: #1E1E1E;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 22.4px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
 }
-.framework-pc .hero-actions {
+.footer {
   position: absolute;
-  top: 9.82%;
-  left: 0%;
-  right: 0%;
-  bottom: 28.79%;
-  width: calc(100% - 0% - 0%);
-  height: calc(100% - 9.82% - 28.79%);
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  row-gap: 32px;
-  column-gap: 32px;
-  padding: 96px 24px 96px 24px;
-  background: #F5F5F5;
-}
-.framework-pc .hero-actions .text-content-title {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 1152px;
-  height: 39px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  row-gap: 8px;
-  column-gap: 8px;
-}
-.framework-pc .hero-actions .text-content-title .title {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 1152px;
-  height: 39px;
-  color: #1E1E1E;
-  font-family: "Inter";
-  font-size: 32px;
-  line-height: 38.4px;
-  font-weight: 400;
-  text-align: center;
-}
-.framework-pc .hero-actions .text-content-title .subtitle {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 151px;
-  height: 154px;
-  color: #757575;
-  visibility: hidden;
-  font-family: "Inter";
-  font-size: 32px;
-  line-height: 38.4px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.framework-pc .hero-actions .stats-card {
-  flex-shrink: 0;
-  width: 523px;
-  height: 132px;
-  min-width: 240px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  row-gap: 24px;
-  column-gap: 24px;
-  padding: 24px;
-  background: #FFFFFF;
-  border: 0px solid #D9D9D9;
-}
-.framework-pc .hero-actions .stats-card .button {
-  flex-shrink: 0;
-  width: 112px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 8px;
-  row-gap: 0px;
-  padding: 12px;
+  top: 522px;
+  left: 0px;
+  background-color: var(--background-default-default);
+  border-top: 1px solid var(--border-default-default);
+  box-sizing: border-box;
+  width: var(--device-width);
   overflow: hidden;
-  background: #2C2C2C;
-  border: 0px solid #2C2C2C;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-13xl);
+  gap: var(--space-800);
+  font-size: var(--single-line-body-base-size);
 }
-.framework-pc .hero-actions .stats-card .button .file {
-  flex-shrink: 0;
+.title {
+  align-self: stretch;
+  position: relative;
+  line-height: 120%;
+}
+.textContentTitle {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.fileIcon {
   width: 16px;
+  position: relative;
   height: 16px;
-}
-.framework-pc .hero-actions .stats-card .button .button-1 {
-  flex-shrink: 0;
-  width: 64px;
-  height: 16px;
-  color: #F5F5F5;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
-}
-.framework-pc .hero-actions .stats-card .button .x {
+  overflow: hidden;
   flex-shrink: 0;
 }
-.framework-pc .hero-actions .stats-card .review-body {
-  flex-shrink: 0;
+.button1 {
+  position: relative;
+  line-height: 100%;
+}
+.button {
+  border-radius: var(--radius-200);
+  background-color: var(--text-brand-on-brand-tertiary);
+  border: 1px solid var(--text-brand-on-brand-tertiary);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-300);
+  gap: var(--space-200);
+}
+.text {
   align-self: stretch;
-  width: 475px;
-  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+.reviewBody {
+  align-self: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: start;
   align-items: center;
-  row-gap: 4px;
-  column-gap: 4px;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: var(--body-small-size);
+  color: var(--text-default-default);
 }
-.framework-pc .hero-actions .stats-card .review-body .text {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 475px;
-  height: 20px;
+.statsCard {
+  width: 523px;
+  border-radius: var(--radius-200);
+  background-color: var(--background-default-default);
+  border: 1px solid var(--border-default-default);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--space-600);
+  gap: var(--space-600);
+  min-width: 240px;
+  text-align: left;
+  font-size: var(--single-line-body-base-size);
+  color: var(--background-default-secondary);
+}
+.heroActions {
+  position: absolute;
+  top: 72px;
+  left: 0px;
+  background-color: var(--background-default-secondary);
+  width: 1440px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--space-2400) var(--space-600);
+  box-sizing: border-box;
+  gap: var(--space-800);
+  text-align: center;
+  font-size: var(--subtitle-size);
+}
+.vectorIcon {
+  width: 40px;
+  position: relative;
+  height: 40px;
+}
+.healinker {
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+  font-weight: 600;
+}
+.biTemporary {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: center;
-  align-items: start;
-  row-gap: 0px;
+  gap: var(--space-100);
 }
-.framework-pc .hero-actions .stats-card .review-body .text .text-1 {
+.logo {
+  width: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.navigationPillList {
+  flex: 1;
+  height: 32px;
+}
+.button2 {
+  border-radius: var(--radius-200);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-300);
+  font-size: var(--single-line-body-base-size);
+  color: var(--text-neutral-default);
+}
+.header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--background-default-default);
+  border-bottom: 1px solid var(--border-default-default);
+  box-sizing: border-box;
+  width: var(--device-width);
+  height: 72px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: var(--space-400) var(--space-800);
+  gap: 0px 24px;
+  color: var(--color-black);
+}
+.iconButton {
+  width: 44px;
+  border-radius: var(--scale-06);
+  background-color: var(--background-default-secondary);
+  border: 1px solid var(--border-default-default);
+  box-sizing: border-box;
+  height: 44px;
+  overflow: hidden;
   flex-shrink: 0;
-  width: 219px;
-  height: 20px;
-  color: #1E1E1E;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 14px;
-  line-height: 19.6px;
-  font-weight: 400;
+  display: none;
+}
+.block1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-5xl);
+}
+.title1 {
+  align-self: stretch;
+  position: relative;
+  letter-spacing: -0.02em;
+  line-height: 120%;
+  font-weight: 600;
+  color: var(--text-brand-on-brand-tertiary);
   text-align: center;
 }
-.framework-pc .header {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 90.18%;
-  width: calc(100% - 0% - 0%);
-  height: calc(100% - 0% - 90.18%);
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px 24px;
-  padding: 16px 32px 16px 32px;
-  overflow: hidden;
-  background: #FFFFFF;
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
-  border-color: #D9D9D9;
-}
-.framework-pc .header .block {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  column-gap: 24px;
-  row-gap: 0px;
-}
-.framework-pc .header .block .logo {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  row-gap: 0px;
-}
-.framework-pc .header .block .logo .bi-temporary {
-  flex-shrink: 0;
-  width: 151px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 4px;
-  row-gap: 0px;
-}
-.framework-pc .header .block .logo .bi-temporary .vector {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-}
-.framework-pc .header .block .logo .bi-temporary .healinker {
-  flex-shrink: 0;
-  width: 107px;
-  height: 29px;
-  color: #000000;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 24px;
-  line-height: 28.8px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-}
-.framework-pc .header .navigation-pill-list {
-  flex-grow: 1;
-  width: 979px;
-  height: 32px;
-  display: flex;
-  flex-direction: row;
-  justify-content: end;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 8px;
-}
-.framework-pc .header .button-2 {
-  flex-shrink: 0;
-  width: 69px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 8px;
-  row-gap: 0px;
-  padding: 12px;
-  overflow: hidden;
-}
-.framework-pc .header .button-2 .button-3 {
-  flex-shrink: 0;
-  width: 45px;
+.kakaoIcon {
+  width: 16px;
+  position: relative;
   height: 16px;
-  color: #303030;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
+  object-fit: cover;
 }
-.framework-pc .header .button-2 .x-1 {
-  flex-shrink: 0;
-}
-.framework-pc .popover {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 0%;
-  width: calc(100% - 0% - 0%);
-  height: calc(100% - 0% - 0%);
+.button4 {
+  flex: 1;
+  border-radius: var(--radius-200);
+  border: 1px solid var(--border-default-tertiary);
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-300);
+  gap: var(--space-200);
 }
-.framework-pc .popover .form-contact {
+.buttonGroup {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.buttonGroupParent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--space-300);
+  font-size: var(--single-line-body-base-size);
+  color: var(--text-neutral-default);
+}
+.div1 {
+  width: 272px;
+  position: relative;
+  font-size: var(--body-small-size);
+  line-height: 140%;
+  display: inline-block;
+}
+.formContact {
   position: absolute;
   top: 194px;
   left: 440px;
-  width: 320px;
-  height: 345px;
+  border-radius: var(--radius-200);
+  background-color: var(--background-default-default);
+  border: 1px solid var(--border-default-default);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-800) var(--space-800) var(--space-1440);
+  gap: var(--space-800);
   min-width: 320px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: 24px;
-  column-gap: 24px;
-  padding: 24px 24px 48px 24px;
-  overflow: hidden;
-  background: #FFFFFF;
-  border: 0px solid #D9D9D9;
 }
-.framework-pc .popover .form-contact .block-1 {
-  flex-shrink: 0;
-  width: 151px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  column-gap: 24px;
-  row-gap: 0px;
-}
-.framework-pc .popover .form-contact .block-1 .logo-1 {
-  flex-shrink: 0;
-  width: 151px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  row-gap: 0px;
-}
-.framework-pc .popover .form-contact .block-1 .logo-1 .bi-temporary-1 {
-  flex-shrink: 0;
-  width: 151px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 4px;
-  row-gap: 0px;
-}
-.framework-pc .popover .form-contact .block-1 .logo-1 .bi-temporary-1 .vector-1 {
-  flex-shrink: 0;
-  width: 41px;
-  height: 40px;
-}
-.framework-pc .popover .form-contact .block-1 .logo-1 .bi-temporary-1 .healinker-1 {
-  flex-shrink: 0;
-  width: 107px;
-  height: 29px;
-  color: #000000;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 24px;
-  line-height: 28.8px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-}
-.framework-pc .popover .form-contact .text----1 {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 272px;
-  height: 29px;
-  color: #2C2C2C;
-  font-family: "Inter";
-  font-size: 24px;
-  line-height: 28.8px;
-  font-weight: 600;
-  text-align: center;
-}
-.framework-pc .popover .form-contact .frame-2 {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 272px;
-  height: 92px;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  row-gap: 12px;
-  column-gap: 12px;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 272px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  column-gap: 16px;
-  row-gap: 0px;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-4 {
-  flex-grow: 1;
-  width: 112px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 8px;
-  row-gap: 0px;
-  padding: 12px;
-  overflow: hidden;
-  visibility: hidden;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-4 .star {
-  flex-shrink: 0;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-4 .button-5 {
-  flex-shrink: 0;
-  width: 51px;
-  height: 16px;
-  color: #303030;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-4 .x-2 {
-  flex-shrink: 0;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-6 {
-  flex-grow: 1;
-  width: 272px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 8px;
-  row-gap: 0px;
-  padding: 12px;
-  overflow: hidden;
-  border: 0px solid #D9D9D9;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-6 .kakao {
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-6 .kakao .rectangle---yellow-1 {
+.popover {
   position: absolute;
-  top: 0%;
-  left: 0%;
-  right: 0%;
-  bottom: 0%;
-  width: calc(100% - 0% - 0%);
-  height: calc(100% - 0% - 0%);
-  object-fit: cover;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-6 .button-7 {
-  flex-shrink: 0;
-  width: 123px;
-  height: 16px;
-  color: #303030;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group .button-6 .x-3 {
-  flex-shrink: 0;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group-1 {
-  flex-shrink: 0;
-  align-self: stretch;
-  width: 272px;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  column-gap: 16px;
-  row-gap: 0px;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-8 {
-  flex-grow: 1;
-  width: 112px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 8px;
-  row-gap: 0px;
-  padding: 12px;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 1440px;
+  height: 733px;
   overflow: hidden;
-  visibility: hidden;
+  color: var(--color-black);
 }
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-8 .star-1 {
-  flex-shrink: 0;
+.frameworkPc {
+  width: 100%;
+  position: relative;
+  height: 733px;
+  text-align: left;
+  font-size: var(--heading-size);
+  color: var(--text-default-default);
+  font-family: var(--heading);
 }
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-8 .button-9 {
-  flex-shrink: 0;
-  width: 51px;
-  height: 16px;
-  color: #303030;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-8 .x-4 {
-  flex-shrink: 0;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-10 {
-  flex-grow: 1;
-  width: 272px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  column-gap: 8px;
-  row-gap: 0px;
-  padding: 12px;
-  overflow: hidden;
-  border: 0px solid #000000;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-10 .mail {
-  flex-shrink: 0;
-  width: 17px;
-  height: 16px;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-10 .button-11 {
-  flex-shrink: 0;
-  width: 123px;
-  height: 16px;
-  color: #303030;
-  white-space: nowrap;
-  font-family: "Inter";
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
-}
-.framework-pc .popover .form-contact .frame-2 .button-group-1 .button-10 .x-5 {
-  flex-shrink: 0;
-}
-.framework-pc .popover .form-contact .text--------- {
-  flex-shrink: 0;
-  width: 272px;
-  height: 40px;
-  color: #000000;
-  font-family: "Inter";
-  font-size: 14px;
-  line-height: 19.6px;
-  font-weight: 400;
-}
+
 </style>

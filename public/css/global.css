@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+body {
+    margin: 0; line-height: normal;
+}
+:root {
+
+    /* fonts */
+    --heading: Inter;
+    --single-line-body-base: Inter;
+    --body-small: Inter;
+
+    /* font sizes */
+    --body-small-size: 14px;
+    --single-line-body-base-size: 16px;
+    --heading-size: 24px;
+    --subtitle-size: 32px;
+
+    /* Colors */
+    --text-brand-on-brand: #f5f5f5;
+    --text-brand-on-brand-tertiary: #2c2c2c;
+    --text-default-default: #1e1e1e;
+    --background-default-default: #fff;
+    --background-brand-default: #2c2c2c;
+    --border-default-default: #d9d9d9;
+    --color-black: #000;
+    --border-default-tertiary: #383838;
+    --text-neutral-default: #303030;
+    --background-default-secondary: #f5f5f5;
+
+    /* Spacing */
+    --space-600: 24px;
+    --space-1200: 48px;
+    --space-1440: 62px;
+    --radius-200: 8px;
+    --space-300: 12px;
+    --space-400: 16px;
+    --space-200: 8px;
+    --space-100: 4px;
+    --scale-06: 32px;
+    --space-800: 32px;
+    --device-width: 1200px;
+    --space-2400: 96px;
+    --padding-sm: 8px;
+    --icon-small: 24px;
+    --radius-full: 9999px;
+
+    /* Gaps */
+    --gap-5xl: 24px;
+    --gap-5xs: 8px;
+    --gap-9xs: 4px;
+    --gap-13xl: 32px;
+
+    /* Paddings */
+    --padding-5xl: 24px;
+    --padding-5xs: 8px;
+    --padding-xs: 12px;
+    --padding-13xl: 32px;
+
+    /* Border radiuses */
+    --br-5xs: 8px;
+    --br-13xl: 32px;
+
+}
