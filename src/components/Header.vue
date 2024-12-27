@@ -1,11 +1,7 @@
 <template>
+  <div><img alt="힐링커 로고" src="/images/logo_text.png"/></div>
   <div>
-    <img alt="힐링커 로고" src="/images/logo_main.svg" />
-    <div>Healinker</div>
-
-    <div>
-      <div @click="login">로그인</div>
-    </div>
+    <div @click="login">로그인</div>
   </div>
 </template>
 
@@ -21,4 +17,6 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
