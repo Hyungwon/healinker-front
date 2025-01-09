@@ -14,7 +14,7 @@ import Header from './components/Header.vue'
 import MainContent from "./components/MainContent.vue";
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
     Footer,
     Header,
@@ -22,5 +22,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped></style>
