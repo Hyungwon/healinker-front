@@ -58,8 +58,9 @@
 
 <script>
 import {debounce} from 'lodash';
-import {initKakao} from "../utils/kakao";
+import {initKakao, resetKakao} from "../utils/kakao";
 import axios from "axios";
+import router from "../router/index.js";
 
 export default {
   name: "Header",
@@ -80,13 +81,7 @@ export default {
     logout() {
       localStorage.removeItem('kakao_access_token');
       this.isLogin = false;
-      Kakao.Auth.logout()
-          .then(function(response) {
-            console.log(Kakao.Auth.getAccessToken()); // null
-          })
-          .catch(function(error) {
-            console.log('Not logged in.');
-          });
+      resetKakao();
     },
     showLoginModal() {
       const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
@@ -94,13 +89,11 @@ export default {
     },
     kakaoLogin: debounce(function () {
       initKakao();
-      const redirectUri = `${window.location.origin}/callback-kakao`;
       // const state = btoa(JSON.stringify({}));
       // Kakao.Auth.authorize({
       //   redirectUri: `${redirectUri}`,
       //   // state: `${state}`,
       // });
-
 
       if (Kakao.Auth.getAccessToken()) {
         Kakao.API.request({
@@ -145,12 +138,10 @@ export default {
       this.showLoginModal();
     }
 
-    const p_code = new URL(window.location.href).searchParams.get('code');
-    // if (p_code) {
-    //
-    // }
-    console.debug('Header mounted:', p_code);
-    if (p_code) { // 카카오 로그인 콜백
+    const p_url = new URL(window.location.href);
+    const p_code = p_url.searchParams.get('code');
+    const p_path = p_url.pathname;
+    if (p_code && p_path === '/callback-kakao') {
       const q_data = {
         grant_type: 'authorization_code',
         client_id: import.meta.env.VITE_KAKAO_REST_KEY,
@@ -166,12 +157,12 @@ export default {
         }
       });
       const kakaoToken = response.data.access_token;
-      console.debug('Kakao token:', kakaoToken);
-      // Kakao.Auth.setAccessToken(kakaoToken);
       localStorage.setItem('kakao_access_token', kakaoToken);
-      this.$router.push('/');
-
+      if( this.checkLogin() ) {
+        this.$router.push('/');
+      }
     }
-  }
+  },
+
 }
 </script>

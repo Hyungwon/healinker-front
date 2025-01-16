@@ -42,6 +42,29 @@ export default {
       }
     },
   },
+  async mounted() {
+    const p_code = new URL(window.location.href).searchParams.get('code');
+    if (p_code) { // 카카오 로그인 콜백
+      const q_data = {
+        grant_type: 'authorization_code',
+        client_id: import.meta.env.VITE_KAKAO_REST_KEY,
+        redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+        code: p_code
+      };
+      const q_string = Object.keys(q_data)
+          .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(q_data[k]))
+          .join('&');
+      const response = await axios.post('https://kauth.kakao.com/oauth/token', q_string, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+        }
+      }).then(response => {
+        console.log(response.data);
+        const kakaoToken = response.data.access_token;
+        localStorage.setItem('kakao_access_token', kakaoToken);
+      });
+    }
+  }
 }
 </script>
 
