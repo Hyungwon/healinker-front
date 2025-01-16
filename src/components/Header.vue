@@ -33,7 +33,7 @@
   </header>
 
   <!-- Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header d-block text-center bb_none">
@@ -54,12 +54,12 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
 import {debounce} from 'lodash';
 import {initKakao} from "../utils/kakao";
+import axios from "axios";
 
 export default {
   name: "Header",
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     checkLogin() {
-      const loginValue = localStorage.getItem('loginId');
+      const loginValue = localStorage.getItem('kakao_access_token');
       // 로그인 값이 비어 있거나 특정 조건이 맞지 않으면 false 반환
       if (!loginValue || loginValue === 'expired') {
         return false;
@@ -78,8 +78,15 @@ export default {
       return true; // 로그인 상태
     },
     logout() {
-      localStorage.removeItem('loginId');
+      localStorage.removeItem('kakao_access_token');
       this.isLogin = false;
+      Kakao.Auth.logout()
+          .then(function(response) {
+            console.log(Kakao.Auth.getAccessToken()); // null
+          })
+          .catch(function(error) {
+            console.log('Not logged in.');
+          });
     },
     showLoginModal() {
       const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
@@ -87,25 +94,83 @@ export default {
     },
     kakaoLogin: debounce(function () {
       initKakao();
-
       const redirectUri = `${window.location.origin}/callback-kakao`;
-      // const state = btoa(JSON.stringify({ redirectUri, appKey, previousUrl }));
-      const state = btoa(JSON.stringify({}));
+      // const state = btoa(JSON.stringify({}));
+      // Kakao.Auth.authorize({
+      //   redirectUri: `${redirectUri}`,
+      //   // state: `${state}`,
+      // });
+
+
+      if (Kakao.Auth.getAccessToken()) {
+        Kakao.API.request({
+          url: '/v1/user/unlink',
+          success: function (response) {
+            console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+        Kakao.Auth.setAccessToken(undefined)
+      }
       Kakao.Auth.authorize({
-        redirectUri: `${redirectUri}`,
-        state: `${state}`,
+        redirectUri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+        success: function () {
+          Kakao.API.request({
+            url: '/v2/user/me',
+            data: {
+              property_keys: ["kakao_account.email"]
+            },
+            success: async function (response) {
+              console.log(response);
+            },
+            fail: function (error) {
+              console.log(error)
+            },
+          })
+        },
+        fail: function (error) {
+          console.log(error)
+        },
       });
     }, 500),
     emailLogin() {
-      // Email login logic here
       console.log("Email login initiated");
     }
   },
-  mounted() {
-    // 로그인 여부 확인
+  async mounted() {
     this.isLogin = this.checkLogin();
     if (!this.isLogin) {
       this.showLoginModal();
+    }
+
+    const p_code = new URL(window.location.href).searchParams.get('code');
+    // if (p_code) {
+    //
+    // }
+    console.debug('Header mounted:', p_code);
+    if (p_code) { // 카카오 로그인 콜백
+      const q_data = {
+        grant_type: 'authorization_code',
+        client_id: import.meta.env.VITE_KAKAO_REST_KEY,
+        redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+        code: p_code
+      };
+      const q_string = Object.keys(q_data)
+          .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(q_data[k]))
+          .join('&');
+      const response = await axios.post('https://kauth.kakao.com/oauth/token', q_string, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+        }
+      });
+      const kakaoToken = response.data.access_token;
+      console.debug('Kakao token:', kakaoToken);
+      // Kakao.Auth.setAccessToken(kakaoToken);
+      localStorage.setItem('kakao_access_token', kakaoToken);
+      this.$router.push('/');
+
     }
   }
 }
