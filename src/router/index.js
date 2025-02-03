@@ -1,10 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../App.vue';
-import CallbackKakao from '../components/CallbackKakao.vue';
+import Home from '../views/Home.vue';
+import store from '../store';
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/callback-kakao', component: CallbackKakao }
+    { path: '/', name: 'Home', component: Home },
+    {
+        path: '/callback-kakao',
+        name: 'CallbackKakao',
+        component: () => import('../components/CallbackKakao.vue'),
+        meta: { 
+            requiresAuth: false,
+            title: '카카오 로그인 콜백'
+        }
+    },
+    {
+        path: '/404',
+        name: 'NotFound',
+        component: () => import('../views/NotFound.vue')
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        redirect: '/404'
+    }
 ];
 
 const router = createRouter({

@@ -10,21 +10,16 @@
         <div class="ms-auto">
           <!-- Dropdown -->
           <div class="dropdown">
-            <img src="/images/blank.png"
-                 class="profile-img dropdown-toggle"
-                 id="dropdownMenuButton"
-                 data-bs-toggle="dropdown"
-                 aria-expanded="false"/>
+            <img src="/images/blank.png" class="profile-img dropdown-toggle" id="dropdownMenuImage" data-bs-toggle="dropdown" aria-expanded="false"/>
             <button
                 class="arrow-btn"
-                id="dropdownMenuButton"
+                id="dropdownArrowBtn"
                 data-bs-toggle="dropdown"
                 aria-expanded="false">
             </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuImage dropdownArrowBtn">
               <li><a class="dropdown-item" href="#">설정</a></li>
-              <li><a class="dropdown-item" href="#"
-                     @click="isLogin ? logout() : showLoginModal()">{{ isLogin ? '로그아웃' : '로그인' }}</a></li>
+              <li><a class="dropdown-item" href="#" @click="isLogin ? logout() : showLoginModal()">{{ isLogin ? '로그아웃' : '로그인' }}</a></li>
             </ul>
           </div>
         </div>
@@ -59,6 +54,7 @@
 <script>
 import {debounce} from 'lodash';
 import {initKakao, resetKakao} from "../utils/kakao";
+import Cookies from 'js-cookie';
 import axios from "axios";
 import router from "../router/index.js";
 
@@ -66,74 +62,80 @@ export default {
   name: "Header",
   data() {
     return {
-      isLogin: false
+      // isLogin 제거
+    }
+  },
+  computed: {
+    isLogin() {
+      return this.checkLogin();
     }
   },
   methods: {
     checkLogin() {
       const loginValue = localStorage.getItem('kakao_access_token');
-      // 로그인 값이 비어 있거나 특정 조건이 맞지 않으면 false 반환
-      if (!loginValue || loginValue === 'expired') {
-        return false;
-      }
-      return true; // 로그인 상태
+      return !(!loginValue || loginValue === 'expired');
     },
     logout() {
       localStorage.removeItem('kakao_access_token');
-      this.isLogin = false;
+      Cookies.remove('kakao_access_token');
       resetKakao();
+      // 페이지 강제 새로고침으로 변경
+      window.location.href = '/';
     },
     showLoginModal() {
       const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
       loginModal.show();
     },
-    kakaoLogin: debounce(function () {
-      initKakao();
-      // const state = btoa(JSON.stringify({}));
-      // Kakao.Auth.authorize({
-      //   redirectUri: `${redirectUri}`,
-      //   // state: `${state}`,
-      // });
+    kakaoLogin: debounce(async function () {
+      try {
+        initKakao();
+        
+        // 기존 토큰이 있다면 로그아웃 처리
+        if (Kakao.Auth.getAccessToken()) {
+          await new Promise((resolve, reject) => {
+            Kakao.API.request({
+              url: '/v1/user/unlink',
+              success: (response) => resolve(response),
+              fail: (error) => reject(error),
+            });
+          });
+          Kakao.Auth.setAccessToken(undefined);
+        }
 
-      if (Kakao.Auth.getAccessToken()) {
-        Kakao.API.request({
-          url: '/v1/user/unlink',
-          success: function (response) {
-            console.log(response)
-          },
-          fail: function (error) {
-            console.log(error)
-          },
-        })
-        Kakao.Auth.setAccessToken(undefined)
-      }
-      Kakao.Auth.authorize({
-        redirectUri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
-        success: function () {
+        // 카카오 인증 프로세스 시작
+        await new Promise((resolve, reject) => {
+          Kakao.Auth.authorize({
+            redirectUri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+            success: () => resolve(),
+            fail: (error) => reject(error),
+          });
+        });
+
+        // 사용자 정보 요청
+        const userInfo = await new Promise((resolve, reject) => {
           Kakao.API.request({
             url: '/v2/user/me',
             data: {
               property_keys: ["kakao_account.email"]
             },
-            success: async function (response) {
-              console.log(response);
-            },
-            fail: function (error) {
-              console.log(error)
-            },
-          })
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      });
+            success: (response) => resolve(response),
+            fail: (error) => reject(error),
+          });
+        });
+
+        console.log('카카오 로그인 성공:', userInfo);
+        
+      } catch (error) {
+        console.error('카카오 로그인 실패:', error);
+        // 에러 처리를 위한 사용자 피드백 추가 가능
+      }
     }, 500),
     emailLogin() {
       console.log("Email login initiated");
     }
   },
   async mounted() {
-    this.isLogin = this.checkLogin();
+    // isLogin이 computed 속성이므로 직접 할당할 필요 없음
     if (!this.isLogin) {
       this.showLoginModal();
     }
