@@ -32,7 +32,7 @@ footer {
         }
 .arrow-btn {
             border: none;
-            background-image: url("../img/chevron_down.svg");
+            background-image: url("../images/chevron_down.svg");
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;

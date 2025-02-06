@@ -88,8 +88,6 @@ export default {
     },
     kakaoLogin: debounce(async function () {
       try {
-        initKakao();
-        
         // 기존 토큰이 있다면 로그아웃 처리
         if (Kakao.Auth.getAccessToken()) {
           await new Promise((resolve, reject) => {
@@ -135,6 +133,7 @@ export default {
     }
   },
   async mounted() {
+    initKakao();
     // isLogin이 computed 속성이므로 직접 할당할 필요 없음
     if (!this.isLogin) {
       this.showLoginModal();
